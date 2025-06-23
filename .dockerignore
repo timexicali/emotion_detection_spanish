@@ -46,8 +46,9 @@ ehthumbs.db
 Thumbs.db
 
 # Documentation
-*.md
 docs/
+# Keep README.md in container
+!README.md
 
 # Logs
 logs/

@@ -50,10 +50,13 @@ def load_tokenizer_and_model(model_name_or_path: str,
     
     # Load model
     if os.path.exists(model_name_or_path) and os.path.isdir(model_name_or_path):
-        # Local fine-tuned model
+        # Local fine-tuned model - read config to get actual number of labels
+        from transformers import AutoConfig
+        config = AutoConfig.from_pretrained(model_name_or_path)
+        actual_num_labels = getattr(config, 'num_labels', num_labels)
+        
         model = AutoModelForSequenceClassification.from_pretrained(
-            model_name_or_path,
-            num_labels=num_labels
+            model_name_or_path
         )
     else:
         # Hugging Face model

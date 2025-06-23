@@ -19,13 +19,40 @@ A lightweight, **commercial-use-ready** Python library for detecting emotions in
 ## 🚀 Quick Start
 
 ### Installation
+
+#### Option 1: Install from Source
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/emotion_detection_spanish.git
+git clone https://github.com/timexicali/emotion_detection_spanish.git
+cd emotion_detection_spanish
+
+# Install the package (development mode)
+pip install -e .
+
+# Or install production version
+pip install .
+```
+
+#### Option 2: Install Dependencies Only
+```bash
+# Clone the repository
+git clone https://github.com/timexicali/emotion_detection_spanish.git
 cd emotion_detection_spanish
 
 # Install dependencies
 pip install -r requirements.txt
+```
+
+#### Option 3: Using Docker 🐳
+```bash
+# Build the Docker image
+docker build -t spanish-emotions .
+
+# Run the example usage
+docker run spanish-emotions
+
+# Run with custom command (interactive)
+docker run -it spanish-emotions bash
 ```
 
 ### Basic Usage
@@ -129,6 +156,63 @@ python -m spanish_emotions validate my_dataset.csv
 
 # Show library information
 python -m spanish_emotions info
+```
+
+## 📦 Packaging & Distribution
+
+The library is packaged using modern Python packaging standards (PEP 621) with `pyproject.toml`:
+
+### Local Development
+```bash
+# Install in development mode with optional dependencies
+pip install -e ".[dev]"
+
+# Run tests
+pytest
+
+# Format code
+black spanish_emotions/
+isort spanish_emotions/
+```
+
+### Building Distribution Packages
+```bash
+# Install build tools
+pip install build
+
+# Build source and wheel distributions
+python -m build
+
+# Install from wheel
+pip install dist/spanish_emotions-1.0.0-py3-none-any.whl
+```
+
+### Command Line Interface
+After installation, the CLI is available as `spanish-emotions`:
+```bash
+# Show library info
+spanish-emotions info
+
+# Detect emotions
+spanish-emotions detect "¡Estoy muy feliz!"
+
+# From file with JSON output
+spanish-emotions detect --file texts.txt --json
+```
+
+### Docker Usage
+```bash
+# Build image
+docker build -t spanish-emotions .
+
+# Run example
+docker run spanish-emotions
+
+# Interactive shell
+docker run -it spanish-emotions bash
+
+# Mount local data
+docker run -v $(pwd)/data:/app/data spanish-emotions
 ```
 
 ## 🔧 Advanced Usage

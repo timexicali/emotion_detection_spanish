@@ -33,6 +33,14 @@ from .utils import (
     calculate_emotion_statistics
 )
 
+# Training functionality
+from .trainer import (
+    SpanishEmotionTrainer,
+    EmotionTrainingConfig,
+    EXTENDED_EMOTION_LABELS,
+    create_sample_training_data
+)
+
 # Export main classes and functions
 __all__ = [
     # Main detector class
@@ -62,7 +70,13 @@ __all__ = [
     "prepare_dataset_for_training",
     "validate_dataset",
     "split_dataset",
-    "calculate_emotion_statistics"
+    "calculate_emotion_statistics",
+    
+    # Training functionality
+    "SpanishEmotionTrainer",
+    "EmotionTrainingConfig",
+    "EXTENDED_EMOTION_LABELS",
+    "create_sample_training_data"
 ]
 
 def get_version():

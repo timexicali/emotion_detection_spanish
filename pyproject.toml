@@ -1,0 +1,124 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spanish-emotions"
+version = "1.0.0"
+description = "A lightweight Python library for detecting emotions in Spanish text using transformer models"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+keywords = ["emotion-detection", "spanish", "nlp", "sentiment-analysis", "transformers", "machine-learning"]
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+maintainers = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research", 
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Linguistic",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "torch>=2.0.0",
+    "transformers>=4.30.0",
+    "datasets>=2.12.0",
+    "scikit-learn>=1.3.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "emoji>=2.8.0",
+    "unidecode>=1.3.6",
+    "accelerate>=0.20.0",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "evaluate>=0.4.0",
+    "black",
+    "flake8",
+    "isort",
+    "mypy",
+]
+docs = [
+    "sphinx",
+    "sphinx-rtd-theme", 
+    "myst-parser",
+]
+all = [
+    "spanish-emotions[dev,docs]"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/timexicali/emotion_detection_spanish"
+"Bug Reports" = "https://github.com/timexicali/emotion_detection_spanish/issues"
+"Source" = "https://github.com/timexicali/emotion_detection_spanish"
+"Documentation" = "https://github.com/timexicali/emotion_detection_spanish#readme"
+
+[project.scripts]
+spanish-emotions = "spanish_emotions.__main__:main"
+
+[tool.setuptools]
+packages = ["spanish_emotions"]
+
+[tool.setuptools.package-data]
+spanish_emotions = ["*.txt", "*.json", "*.yaml", "*.yml"]
+
+# Development tools configuration
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["spanish_emotions"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+python_files = [
+    "test_*.py",
+    "*_test.py",
+] 
